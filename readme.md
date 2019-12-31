@@ -1,0 +1,1 @@
+wget https://raw.githubusercontent.com/GastonHeim/Laravel-Requirement-Checker/master/check.php
