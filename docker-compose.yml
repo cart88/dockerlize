@@ -39,3 +39,11 @@ services:
             MYSQL_DATABASE: ${MYSQL_DATABASE}
         ports: 
             - '3306:3306'
+
+    redis:
+        build:
+            context: ./docker/redis
+        image: 'redis:alpine'
+        container_name: ${PROJECT_NAME}-redis
+        ports:
+            - '6379:6379'
