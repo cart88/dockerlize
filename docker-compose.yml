@@ -11,6 +11,7 @@ services:
             - ./docker/nginx/vhost:/etc/nginx/conf.d/default.conf
         links: 
             - php
+            - mysql
     php:
         build:
             context: ./docker/php # 在这个位置找 Dockerfile
@@ -19,3 +20,16 @@ services:
             - '9000:9000'
         volumes: 
             - ./code:/code
+
+    mysql:
+        build: 
+            context: ./docker/mysql
+        image: 'mysql:5.7'
+        container_name: ${PROJECT_NAME}-mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+        ports: 
+            - '3306:3306'
