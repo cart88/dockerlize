@@ -32,3 +32,6 @@ RUN apk update && apk add \
     && echo "xdebug.remote_host=$XDEBUG_REMOTE_HOST" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
     # https://github.com/mlocati/docker-php-extension-installer PHP docker插件安装
+
+    RUN mkdir /var/log/php-fpm \
+    && chown -R www-data:www-data -R /var/log/php-fpm
